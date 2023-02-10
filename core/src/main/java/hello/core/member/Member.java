@@ -6,7 +6,7 @@ public class Member {
     private String name;
     private Grade grade;
 
-    public Member(Long id, String name, Grade grade) {
+    public Member(Long id, String name, Grade grade) { //Member 객체 생성자
         this.id = id;
         this.name = name;
         this.grade = grade;
