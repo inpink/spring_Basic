@@ -12,8 +12,13 @@ public class OrderApp { //할인&주문 테스트 : 위에서 했던 것처럼 p
 
     public static void main(String[] args) {
         //MemberService와 OrderService 객체와 Member객체를 만들어서 'createOrder'을 테스트함.
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService =new OrderServiceImpl();
+        //MemberService memberService = new MemberServiceImpl();
+        //OrderService orderService =new OrderServiceImpl();
+
+        //AppConfig를 만들어 줬으므로, 여기서 꺼내 사용
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         long memberId=1L;
         Member member=new Member(memberId,"memberA", Grade.VIP);

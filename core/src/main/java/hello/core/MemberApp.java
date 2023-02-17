@@ -9,7 +9,15 @@ public class MemberApp { //순수 자바 코드로 하는 TEST
 
     public static void main(String[] args) {
         //MemberService 상속받은 MemberServiceImple 생성. 이 안의 join 테스트 할 것임.
-        MemberService memberService=new MemberServiceImpl();
+        //MemberService memberService=new MemberServiceImpl();
+
+        //ApplConfig를 추가해 줬으므로, Test에서 썼던 MemberService와 OrderService도 바꿔줘야 함.
+
+        //AppConfig를 만들어 줬으므로, 여기서 꺼내 사용
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+
+
         //Member 객체 생성해서 join테스트 시 사용
         Member member=new Member(1L,"memberA", Grade.VIP); //Long id, String name, enum Grade. Long type이라 1L으로 L 붙여줘야 함
         memberService.join(member); //join 테스트 할 것

@@ -1,13 +1,22 @@
 package hello.core.member;
 
+import hello.core.AppConfig;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 
 public class MemberServiceTest {
 
-    MemberService memberService=new MemberServiceImpl();
+    MemberService memberService;
+
+    @BeforeEach
+    public void beforeEach(){
+        AppConfig appConfig= new AppConfig();
+        memberService= appConfig.memberService();
+    }
+
 
     @Test //테스트를 위해 @Test 어노테이션을 달아준다.
     void join(){ //회원가입 기능 join()을 테스트한다.

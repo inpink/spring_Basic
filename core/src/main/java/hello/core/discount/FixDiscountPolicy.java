@@ -3,7 +3,7 @@ package hello.core.discount;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 
-public class FixDistcountPolicy implements DiscountPolicy{ //구현체로 FixDistcountPolicy class를 만듦. DiscountPolicy 상속
+public class FixDiscountPolicy implements DiscountPolicy{ //구현체로 FixDistcountPolicy class를 만듦. DiscountPolicy 상속
 
     private int discountFixAmount=1000; //1000원 할인
 
