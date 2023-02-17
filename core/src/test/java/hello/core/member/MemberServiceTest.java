@@ -17,7 +17,6 @@ public class MemberServiceTest {
         memberService= appConfig.memberService();
     }
 
-
     @Test //테스트를 위해 @Test 어노테이션을 달아준다.
     void join(){ //회원가입 기능 join()을 테스트한다.
         /*given-when-then 3가지 기법을 사용한다

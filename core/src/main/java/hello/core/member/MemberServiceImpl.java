@@ -11,6 +11,7 @@ public class MemberServiceImpl implements MemberService{
     //생성자를 생성하고, AppConfig를 이용하여 매개변수로 new MemoryMemberRepository()를 주입받는다!
     //=>스프링 컨테이너의 역할을 한다. ( 의존관계 MemberServiceImpl -> MemoryMemberRepository 주입)
     public  MemberServiceImpl(MemberRepository memberRepository){
+
         this.memberRepository=memberRepository;
     }
 
