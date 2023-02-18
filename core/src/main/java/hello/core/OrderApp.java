@@ -7,6 +7,8 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.order.Order;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderApp { //할인&주문 테스트 : 위에서 했던 것처럼 psvm main을 만들어서 순수 JAVA로 직접 테스트한다. (비추하는 방식)
 
@@ -16,9 +18,15 @@ public class OrderApp { //할인&주문 테스트 : 위에서 했던 것처럼 p
         //OrderService orderService =new OrderServiceImpl();
 
         //AppConfig를 만들어 줬으므로, 여기서 꺼내 사용
-        AppConfig appConfig = new AppConfig();
+       /* AppConfig appConfig = new AppConfig();
         MemberService memberService = appConfig.memberService();
-        OrderService orderService = appConfig.orderService();
+        OrderService orderService = appConfig.orderService();*/
+
+        //스프링 컨테이너 적용. 중복되는 내용이 많아 자세한 설명은 PASS.
+        ApplicationContext applicationContext=
+                new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService=applicationContext.getBean("memberService",MemberService.class);
+        OrderService orderService = applicationContext.getBean("orderService",OrderService.class);
 
         long memberId=1L;
         Member member=new Member(memberId,"memberA", Grade.VIP);
