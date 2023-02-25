@@ -34,4 +34,29 @@ public class SingletonTest {
         // 동일한 객체가 여러 개 생성되지 않고, 단 하나만 생성해둔 뒤, 모든 클래스에서 같은 하나의 인스턴스를 공유할 수 있다!
         Assertions.assertThat(memberService1).isNotSameAs(memberService2);
     }
+
+
+    //방금 만든 SingletonService 클래스를 사용하는 테스트 코드를 작성해보자.
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 생성 테스트")
+    public void singletonServiceTest(){
+
+        //private를 이용하여 생성자 생성을 막아두었기 때문에 에러 발생
+        //SingletonService singletonService = new SingletonService();
+
+        //SingletonService에서 직접 getInstance()를 통해 2개의 객체를 받아온다.
+        SingletonService singletonService1 = SingletonService.getInstance();
+        SingletonService singletonService2 = SingletonService.getInstance();
+
+        //참조값이 같은 지 확인
+        System.out.println("singletonService1 = " + singletonService1);
+        System.out.println("singletonService2 = " + singletonService2);
+
+        //asserThat으로, ☆두 객체가 같은지(isSameAs)☆ 검증한다. 잘 성공한다.
+        //=>호출할 때 마다 같은 객체 인스턴스를 반환하는 것을 확인할 수 있다.
+        Assertions.assertThat(singletonService1).isSameAs(singletonService2);
+
+        //그냥 출력
+        singletonService1.logic();
+    }
 }
