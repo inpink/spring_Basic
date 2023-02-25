@@ -5,6 +5,8 @@ import hello.core.member.MemberService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class SingletonTest {
 
@@ -58,5 +60,26 @@ public class SingletonTest {
 
         //그냥 출력
         singletonService1.logic();
+    }
+
+    //스프링 컨테이너를 이용해서 싱글톤 패턴을 테스트해보자.
+    @Test
+    @DisplayName("스프링 컨테이너를 이용해서 싱글톤 패턴을 테스트")
+    void springContainer(){
+        // java설정 파일을 스프링 컨테이너로 올려준다.
+        ApplicationContext ac
+                = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        //마찬가지로 2개의 MemberService객체를 만든다.
+        // ac.getBean으로, 빈 중 memberSerivce라는 이름의 빈을 2번 가져와본다.
+        MemberService memberService1 = ac.getBean("memberService", MemberService.class);
+        MemberService memberService2 = ac.getBean("memberService", MemberService.class);
+
+        System.out.println("memberService1 = " + memberService1);
+        System.out.println("memberService2 = " + memberService2);
+
+        //asserThat,isSameAs로 두 개의 객체가 같은 객체인지 검증한다!
+        //=> 스프링 컨테이너는 싱글톤 컨테이너로 싱글톤 패턴을 적용해주고 있기 때문에 검증 잘 성공함.
+        Assertions.assertThat(memberService1).isSameAs(memberService2);
     }
 }
