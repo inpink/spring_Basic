@@ -58,7 +58,7 @@ public class ApplicationContextSameBeanFindTest { //[스프링 빈 조회 - 동�
 
         // for문을 이용해서 map의 key에 담긴 '빈 이름'을 string 형태로 가져와서 출력한다.
         for (String key : beansOfType.keySet()){
-            // map의 get(key)기능을 이용해서 value인 type도 같이 출력한다.
+            // map의 get(key)기능을 이용해서 value인  '☆인스턴스☆'도 같이 출력한다.
             System.out.println("key = "+key+" value = "+beansOfType.get(key));
         }
         System.out.println("beansOfType = "+beansOfType); //해당 Map을 출력한다.
