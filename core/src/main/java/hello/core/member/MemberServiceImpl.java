@@ -15,6 +15,11 @@ public class MemberServiceImpl implements MemberService{
         this.memberRepository=memberRepository;
     }
 
+    //@Configuration과 싱글톤 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
+
     @Override
     public void join(Member member) {
         memberRepository.save(member); //구현

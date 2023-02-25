@@ -23,6 +23,11 @@ public class OrderServiceImpl implements OrderService { //구현체 OrderService
     //구현체 입장에서는 생성자를 통해서 어떤 구현 객체가 주입될지 알 수 없다.
     // 이를 온전히 외부에(AppConfig, 스프링 컨테이너)에 맡긴다.
 
+    //@Configuration과 싱글톤 테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
+
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) { //createOrder을 구현한다.
         Member member=memberRepository.findById(memberId); //저장소에서 findById로 객체 반환받고,
