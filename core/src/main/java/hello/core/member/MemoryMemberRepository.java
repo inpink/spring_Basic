@@ -1,8 +1,11 @@
 package hello.core.member;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class MemoryMemberRepository implements MemberRepository{
     // 내장 메모리에서만 저장하기에 test용도로만 사용 가능
     //아직 DB가 확정되지 않은 상태임. but, 개발은 진행해야 하기 때문에, 가장 단순한 내장 메모리 사용 저장소를 간단한 기능만 구현함

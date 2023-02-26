@@ -2,10 +2,12 @@ package hello.core.discount;
 
 import hello.core.member.Grade;
 import hello.core.member.Member;
+import org.springframework.stereotype.Component;
 
 //[새로운 할인 정책 개발]
 //'기존 VIP 1000원 할인 -> VIP 10%할인' 변경됨.
 //이전 포스팅에서 '객체 지향 설계 원칙 SOLID'를 잘 지키면서 설계했다면, 이 변동에 유연하게 대처할 수 있어야 한다.
+@Component //스프링은, @Component 어노테이션이 붙은 클래스를 스프링 빈으로 등록한다!
 public class RateDiscountPolicy implements DiscountPolicy{
 
     private  int discountPercent=10;

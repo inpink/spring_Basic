@@ -39,6 +39,7 @@ public class AppConfig { //Spring Container 역할을 함.
     // OrderService() 메쏘드도 만들어준다.
     @Bean
     public OrderService orderService(){
+        System.out.println("@Bean이 호출되고있넹");
         //마찬가지로, OrderService의 구현체인 OrderServiceImpl가 직접 MemoryMemberRepository와 FixDiscountPolicy를 불러오지 않게 해주기 위함이다.
         return new OrderServiceImpl(memberRepository(), discountPolicy());
         //의존관계 OrderServiceImpl -> MemoryMemberRepository , FixDiscountPolicy 주입

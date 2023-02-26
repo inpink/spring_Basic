@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 public class StatefulServiceTest {
     //StatefulService에서 공유 필드를 수정함으로써 발생하는 문제를 테스트해봄
@@ -45,6 +46,7 @@ public class StatefulServiceTest {
     //이 클래스 내부에, 자바 설정 파일로 스프링 컨테이너에 올려줄 TestConfig class를 만든다!
     // (StatefulService를 담당하는 자바 설정 파일이 없기 때문에,
     // 스프링 컨테이너에 빈을 올려서 테스트하려면 당연히 만들어줘야 한다)
+    @Configuration
     static  class TestConfig{
 
         //statefulService 빈은 StatefulService ★싱글톤 객체★를 반환한다.

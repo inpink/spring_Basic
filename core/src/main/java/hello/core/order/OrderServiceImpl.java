@@ -5,7 +5,10 @@ import hello.core.discount.FixDiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component //스프링은, @Component 어노테이션이 붙은 클래스를 스프링 빈으로 등록한다!
 public class OrderServiceImpl implements OrderService { //구현체 OrderServiceImpl class를 만들고, OrderService 상속
 
     //MemberRepository, DiscountPolicy 두 가지가 필요하다. (여기서도 여전히 OCP, DIP 어기고 있긴 함)
@@ -15,6 +18,7 @@ public class OrderServiceImpl implements OrderService { //구현체 OrderService
 
     //'생성자'와 매개변수를 이용해서 AppConfig로부터 위의 두 개의 인터페이스의 구현체를 주입받는다.
     //(Alt+Insert하고 Constructor 이용)
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
