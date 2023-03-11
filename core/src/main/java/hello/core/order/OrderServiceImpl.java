@@ -16,6 +16,26 @@ public class OrderServiceImpl implements OrderService { //구현체 OrderService
     private final DiscountPolicy discountPolicy;
     //private final DiscountPolicy;
 
+    /* 일반 메서드 주입
+    @Autowired
+    public void init222(MemberRepository memberRepository, DiscountPolicy
+            discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }*/
+
+  /*  수정자 주입
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository){
+        this.memberRepository=memberRepository;
+    }
+
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy){
+        this.discountPolicy=discountPolicy;
+    }*/
+
+
     //'생성자'와 매개변수를 이용해서 AppConfig로부터 위의 두 개의 인터페이스의 구현체를 주입받는다.
     //(Alt+Insert하고 Constructor 이용)
     @Autowired
