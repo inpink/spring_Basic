@@ -19,7 +19,8 @@ public class BeanLifeCycleTest {
     @Configuration
     static class LifeCycleConfig { //내부에 설정 클래스로 사용할 LifeCycleConfig class
         //'빈 초기화/소멸' 지점에 내가 NetworkClient에서 만든 init, close메서드를 실행시켜주게 할 수 있다!
-        @Bean(initMethod = "init", destroyMethod = "close")
+        //@Bean(initMethod = "init", destroyMethod = "close")
+        @Bean
         public NetworkClient networkClient() { //수동으로 @Bean을 통해 이 package에서 만든 NetworkClient를 스프링 빈으로 등록해준다.
             NetworkClient networkClient = new NetworkClient(); //새로운 NetworkClient 객체를 만들어주고,
             networkClient.setUrl("http://hello-spring.dev"); //필요한 url 설정을 해준다.

@@ -1,5 +1,7 @@
 package hello.core.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -56,7 +58,7 @@ public class NetworkClient { // implements InitializingBean, DisposableBean {
         disConnect();
     }*/
 
-
+    /*
     //@Configuration 설정 파일에서 @Bean으로 NetworkClient를 스프링 빈으로 수동 등록해줄 때,
     // @Bean(initMethod = "init", destroyMethod = "close") 같은 방법으로
     // '빈 초기화/소멸' 지점에 내가 만든 init, close메서드를 실행시켜주게 할 수 있다!
@@ -66,6 +68,21 @@ public class NetworkClient { // implements InitializingBean, DisposableBean {
         call("초기화 연결 메시지");
     }
 
+    public void close() {
+        System.out.println("NetworkClient.close");
+        disConnect();
+    }*/
+
+
+    //@PostConstruct : 빈 초기화 콜백 시점에 실행할 메소드에 달아주면 됨
+    //@PreDestroy : 빈 소멸 콜백 시점에 실행할 메소드에 달아주면 됨
+    @PostConstruct
+    public void init() {
+        System.out.println("NetworkClient.init");
+        connect();
+        call("초기화 연결 메시지");
+    }
+    @PreDestroy
     public void close() {
         System.out.println("NetworkClient.close");
         disConnect();
