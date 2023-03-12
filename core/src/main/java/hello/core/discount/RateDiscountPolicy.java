@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 //'기존 VIP 1000원 할인 -> VIP 10%할인' 변경됨.
 //이전 포스팅에서 '객체 지향 설계 원칙 SOLID'를 잘 지키면서 설계했다면, 이 변동에 유연하게 대처할 수 있어야 한다.
 @Component //스프링은, @Component 어노테이션이 붙은 클래스를 스프링 빈으로 등록한다!
+@Primary //@Primary가 달린 빈이 '우선순위'를 가져서 우선적으로 매칭됨
 @MainDiscountPolicy // @MainDiscountPolicy를 달면 '문자'가 아닌 '어노테이션' 방식으로 @Qualifier를 적용해줄 수 있다!
 public class RateDiscountPolicy implements DiscountPolicy{
 
