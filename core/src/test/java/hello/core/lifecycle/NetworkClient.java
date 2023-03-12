@@ -3,7 +3,7 @@ package hello.core.lifecycle;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class NetworkClient implements InitializingBean, DisposableBean {
+public class NetworkClient { // implements InitializingBean, DisposableBean {
     //이 클래스에서는 실제로 네트워크에 연결하는 것은 아니지만, 시작/종료 시점에 print를 통해 이를 확인하는 용도로 쓰인다.
     //시작 시 호출, 종료 시 호출 등.. 필요한 메서드들을 만들어준다.
 
@@ -34,6 +34,8 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         System.out.println("close: " + url);
     }
 
+
+    /*
     //스프링에서  지원하는 '빈 생명주기 콜백 - 초기화/소멸 ' 시점 호출
     // : 인터페이스(InitializingBean, DisposableBean)를 이용
 
@@ -52,5 +54,21 @@ public class NetworkClient implements InitializingBean, DisposableBean {
         //DisposableBean 인터페이스는 destroy() 메서드를 통해
         // '빈 소멸 콜백 시점'을 알려준다!
         disConnect();
+    }*/
+
+
+    //@Configuration 설정 파일에서 @Bean으로 NetworkClient를 스프링 빈으로 수동 등록해줄 때,
+    // @Bean(initMethod = "init", destroyMethod = "close") 같은 방법으로
+    // '빈 초기화/소멸' 지점에 내가 만든 init, close메서드를 실행시켜주게 할 수 있다!
+    public void init() {
+        System.out.println("NetworkClient.init");
+        connect();
+        call("초기화 연결 메시지");
     }
+
+    public void close() {
+        System.out.println("NetworkClient.close");
+        disConnect();
+    }
+
 }
